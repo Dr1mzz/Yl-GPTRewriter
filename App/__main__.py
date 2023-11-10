@@ -7,6 +7,7 @@ from resources.ui.LoginDialog import Ui_LoginDialog
 from database import UserDao
 import hashlib
 
+
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, user_id) -> None:
         super(MainWindow, self).__init__()
