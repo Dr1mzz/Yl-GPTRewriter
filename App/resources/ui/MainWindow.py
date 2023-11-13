@@ -21,8 +21,7 @@ class Ui_MainWindow(object):
         self.textEdit_2.setObjectName("textEdit_2")
         self.conclusion = QtWidgets.QTextBrowser(self.centralwidget)
         self.conclusion.setGeometry(QtCore.QRect(0, 270, 861, 41))
-        self.conclusion.setStyleSheet("background-color: rgb(125, 200, 200);\n"
-"")
+        self.conclusion.setStyleSheet("background-color: rgb(125, 200, 200);\n" "")
         self.conclusion.setObjectName("conclusion")
         self.reqText = QtWidgets.QTextEdit(self.centralwidget)
         self.reqText.setGeometry(QtCore.QRect(0, 40, 861, 192))
@@ -37,8 +36,7 @@ class Ui_MainWindow(object):
         self.reqText.setObjectName("textEdit_3")
         self.textBrowser_2 = QtWidgets.QTextBrowser(self.centralwidget)
         self.textBrowser_2.setGeometry(QtCore.QRect(0, 0, 861, 41))
-        self.textBrowser_2.setStyleSheet("background-color: rgb(125, 200, 200);\n"
-"")
+        self.textBrowser_2.setStyleSheet("background-color: rgb(125, 200, 200);\n" "")
         self.textBrowser_2.setObjectName("textBrowser_2")
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(-1, 229, 861, 41))
@@ -48,7 +46,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.reqButton = QtWidgets.QPushButton(self.horizontalLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.reqButton.sizePolicy().hasHeightForWidth())
@@ -61,13 +61,15 @@ class Ui_MainWindow(object):
         self.reqButton.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
         self.reqButton.setToolTipDuration(-1)
         self.reqButton.setAutoFillBackground(False)
-        self.reqButton.setStyleSheet("QPushButton {\n"
-"background-color: rgb(148, 206, 120);\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"background-color: #81b369;\n"
-"}")
+        self.reqButton.setStyleSheet(
+            "QPushButton {\n"
+            "background-color: rgb(148, 206, 120);\n"
+            "}\n"
+            "\n"
+            "QPushButton:hover {\n"
+            "background-color: #81b369;\n"
+            "}"
+        )
         icon = QtGui.QIcon()
         script_dir = os.path.dirname(__file__)[:-2]
         rel_path = "ChatGPT_logo.svg.png"
@@ -80,7 +82,9 @@ class Ui_MainWindow(object):
         self.reqButton.setObjectName("reqButton")
         self.horizontalLayout.addWidget(self.reqButton)
         self.AskGPTButton = QtWidgets.QPushButton(self.horizontalLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.AskGPTButton.sizePolicy().hasHeightForWidth())
@@ -91,34 +95,42 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.AskGPTButton.setFont(font)
-        self.AskGPTButton.setStyleSheet("QPushButton {\n"
-"background-color: rgb(148, 206, 120);\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"background-color: #81b369;\n"
-"}")
+        self.AskGPTButton.setStyleSheet(
+            "QPushButton {\n"
+            "background-color: rgb(148, 206, 120);\n"
+            "}\n"
+            "\n"
+            "QPushButton:hover {\n"
+            "background-color: #81b369;\n"
+            "}"
+        )
         self.AskGPTButton.setIcon(icon)
         self.AskGPTButton.setObjectName("AskGPTButton")
         self.horizontalLayout.addWidget(self.AskGPTButton)
         self.rewriteButton = QtWidgets.QPushButton(self.horizontalLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.rewriteButton.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.rewriteButton.sizePolicy().hasHeightForWidth()
+        )
         self.rewriteButton.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.rewriteButton.setFont(font)
-        self.rewriteButton.setStyleSheet("QPushButton {\n"
-"background-color: rgb(148, 206, 120);\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"background-color: #81b369;\n"
-"}")
+        self.rewriteButton.setStyleSheet(
+            "QPushButton {\n"
+            "background-color: rgb(148, 206, 120);\n"
+            "}\n"
+            "\n"
+            "QPushButton:hover {\n"
+            "background-color: #81b369;\n"
+            "}"
+        )
         self.rewriteButton.setIcon(icon)
         self.rewriteButton.setObjectName("rewriteButton")
         self.horizontalLayout.addWidget(self.rewriteButton)
@@ -130,16 +142,26 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.conclusion.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Исправленный текст:</span></p></body></html>"))
-        self.textBrowser_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Текст:</span></p></body></html>"))
+        self.conclusion.setHtml(
+            _translate(
+                "MainWindow",
+                '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">\n'
+                '<html><head><meta name="qrichtext" content="1" /><style type="text/css">\n'
+                "p, li { white-space: pre-wrap; }\n"
+                "</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+                '<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:14pt; font-weight:600; color:#ffffff;">Исправленный текст:</span></p></body></html>',
+            )
+        )
+        self.textBrowser_2.setHtml(
+            _translate(
+                "MainWindow",
+                '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">\n'
+                '<html><head><meta name="qrichtext" content="1" /><style type="text/css">\n'
+                "p, li { white-space: pre-wrap; }\n"
+                "</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+                '<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:14pt; font-weight:600; color:#ffffff;">Текст:</span></p></body></html>',
+            )
+        )
         self.reqButton.setText(_translate("MainWindow", "Запросы"))
         self.AskGPTButton.setText(_translate("MainWindow", "Спросить у GPT"))
         self.rewriteButton.setText(_translate("MainWindow", "Исправить текст"))

@@ -3,44 +3,56 @@ import g4f
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QMainWindow, QApplication, QDialog
 from resources.ui.MainWindow import Ui_MainWindow
+from widgets import RequestWidget
 from resources.ui.LoginDialog import Ui_LoginDialog
-from database import UserDao
+from database import UserDao, ReqDao, ReqException
 import hashlib
+
+
+NO_TEXT_ERROR = "Кажется вы ничего не ввели. Попробуйте снова!"
+CHATGPT_ERROR = "Произошла ошибка. Попробуйте снова!"
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, user_id) -> None:
         super(MainWindow, self).__init__()
         self.user_id = user_id
+        self.cursor = 0
         self.setupUi(self)
+        self.request_widget = RequestWidget(self.user_id)
+        self.request_dao = ReqDao()
         self.initUI()
 
     def initUI(self) -> None:
         self.rewriteButton.clicked.connect(self.ask_gpt)
         self.AskGPTButton.clicked.connect(self.ask_gpt)
+        self.reqButton.clicked.connect(self.get_requests)
 
     def ask_gpt(self) -> None:
         flag = False
         sender = self.sender()
+        request = self.reqText.toPlainText()
         if sender == self.rewriteButton:
-            if self.reqText.toPlainText():
+            if request:
                 prompt = (
                     "Исправь грамматические и пунктационные ошибки, не изменяй формулировки и смысл слов, "
                     "в ответе запиши исправленный текст и ничего больше. Сам текст:"
-                    + self.reqText.toPlainText()
+                    + request
                 )
+                self.add_request(request)
                 self.text_browser_rewriter_style(True)
             else:
                 self.text_browser_rewriter_style(True)
-                self.textEdit_2.setText("Кажется вы ничего не ввели. Попробуйте снова!")
+                self.textEdit_2.setText(NO_TEXT_ERROR)
                 flag = True
         else:
-            if self.reqText.toPlainText():
-                prompt = self.reqText.toPlainText()
+            if request:
+                prompt = request
+                self.add_request(request)
                 self.text_browser_rewriter_style(False)
             else:
                 self.text_browser_rewriter_style(False)
-                self.textEdit_2.setText("Кажется вы ничего не ввели. Попробуйте снова!")
+                self.textEdit_2.setText(NO_TEXT_ERROR)
                 flag = True
         if not (flag):
             try:
@@ -50,8 +62,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     timeout=120,
                 )
             except RuntimeError:
-                self.textEdit_2.setText("Произошла ошибка. Попробуйте снова!")
-            self.textEdit_2.setText(response)
+                self.textEdit_2.setText(CHATGPT_ERROR)
+            if response == "Hmm, I am not sure. Email support@chatbase.co for more info.":
+                self.textEdit_2.setText(CHATGPT_ERROR)
+            else:
+                self.textEdit_2.setText(response)
 
     def text_browser_rewriter_style(self, flag: bool) -> None:
         _translate = QtCore.QCoreApplication.translate
@@ -77,6 +92,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     '<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:14pt; font-weight:600; color:#ffffff;">Ответ GPT:</span></p></body></html>',
                 )
             )
+    
+    def add_request(self, request):
+        # cursor = self.cursor
+        try:
+            self.request_dao.save(self.user_id, request)
+        except ReqException:
+            print("DB CRASH WHEN SAVE")
+
+    def get_requests(self):
+        self.request_widget.initUI()
+        self.request_widget.show()
 
 
 class LoginDialog(QDialog, Ui_LoginDialog):
@@ -85,7 +111,6 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         self.player = None
         self.setupUi(self)
         self.dao = UserDao()
-
         self.log_in_button.clicked.connect(self.log_in)
         self.reg_button.clicked.connect(self.create_user)
 
@@ -98,31 +123,36 @@ class LoginDialog(QDialog, Ui_LoginDialog):
             self.hide()
             self.player.show()
         else:
-            self.set_error('Error: Invalid login or password.')
+            self.set_error("Error: Invalid login or password.")
 
     def is_user_valid(self, login, password):
         user = self.dao.get(login)
-        return user[0] if user is not None and user[3] == hashlib.md5(password.encode()).hexdigest() else -1
+        return (
+            user[0]
+            if user is not None
+            and user[3] == hashlib.md5(password.encode()).hexdigest()
+            else -1
+        )
 
     def create_user(self):
         login = self.login_input.text()
         password = self.pass_input.text()
         if self.check_login(login) and self.check_pass(password):
-            try:
-                self.dao.save(login, login, password)
-                self.log_in()
-            except Exception:
-                self.set_error('Error: this login is already occupied.')
+            # try:
+            self.dao.save(login, login, password)
+            self.log_in()
+            # except Exception:
+            #     self.set_error("Error: this login is already occupied.")
 
     def check_pass(self, password):
         if not 8 <= len(password) <= 30:
-            self.set_error('Error: Password must be 8 to 30 characters long.')
+            self.set_error("Error: Password must be 8 to 30 characters long.")
             return False
         return True
 
     def check_login(self, login):
         if not 3 <= len(login) <= 20:
-            self.set_error('Error: Login must be 3 to 20 characters long.')
+            self.set_error("Error: Login must be 3 to 20 characters long.")
             return False
         return True
 

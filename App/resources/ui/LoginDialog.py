@@ -7,7 +7,9 @@ class Ui_LoginDialog(object):
         LoginDialog.resize(443, 189)
         LoginDialog.setFixedSize(443, 189)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../icons/logo.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(
+            QtGui.QPixmap("../icons/logo.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off
+        )
         LoginDialog.setWindowIcon(icon)
         LoginDialog.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.verticalLayout = QtWidgets.QVBoxLayout(LoginDialog)
@@ -28,11 +30,13 @@ class Ui_LoginDialog(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         self.login_input.setFont(font)
-        self.login_input.setStyleSheet("border-radius: 5px;\n"
-"border-color: #787878;\n"
-"border-width: 2px;\n"
-"border-style: solid;\n"
-"height: 24px;")
+        self.login_input.setStyleSheet(
+            "border-radius: 5px;\n"
+            "border-color: #787878;\n"
+            "border-width: 2px;\n"
+            "border-style: solid;\n"
+            "height: 24px;"
+        )
         self.login_input.setObjectName("login_input")
         self.horizontalLayout.addWidget(self.login_input)
         self.verticalLayout.addLayout(self.horizontalLayout)
@@ -51,11 +55,13 @@ class Ui_LoginDialog(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         self.pass_input.setFont(font)
-        self.pass_input.setStyleSheet("border-radius: 5px;\n"
-"border-color: #787878;\n"
-"border-width: 2px;\n"
-"border-style: solid;\n"
-"height: 24px;")
+        self.pass_input.setStyleSheet(
+            "border-radius: 5px;\n"
+            "border-color: #787878;\n"
+            "border-width: 2px;\n"
+            "border-style: solid;\n"
+            "height: 24px;"
+        )
         self.pass_input.setEchoMode(QtWidgets.QLineEdit.Password)
         self.pass_input.setObjectName("pass_input")
         self.horizontalLayout_2.addWidget(self.pass_input)
@@ -63,7 +69,9 @@ class Ui_LoginDialog(object):
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.reg_button = QtWidgets.QPushButton(LoginDialog)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.reg_button.sizePolicy().hasHeightForWidth())
@@ -72,48 +80,58 @@ class Ui_LoginDialog(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         self.reg_button.setFont(font)
-        self.reg_button.setStyleSheet("QPushButton {\n"
-"    border-radius: 5px;\n"
-"    color: rgb(255, 255, 255);\n"
-"    background-color: #282828;\n"
-"    height: 30px;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: #000000;\n"
-"}\n"
-"QPushButton:onclick {\n"
-"    background-color: rgb(56, 70, 77);\n"
-"}")
+        self.reg_button.setStyleSheet(
+            "QPushButton {\n"
+            "    border-radius: 5px;\n"
+            "    color: rgb(255, 255, 255);\n"
+            "    background-color: #282828;\n"
+            "    height: 30px;\n"
+            "}\n"
+            "QPushButton:hover {\n"
+            "    background-color: #000000;\n"
+            "}\n"
+            "QPushButton:onclick {\n"
+            "    background-color: rgb(56, 70, 77);\n"
+            "}"
+        )
         self.reg_button.setAutoDefault(False)
         self.reg_button.setObjectName("reg_button")
         self.horizontalLayout_3.addWidget(self.reg_button)
         self.log_in_button = QtWidgets.QPushButton(LoginDialog)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.log_in_button.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.log_in_button.sizePolicy().hasHeightForWidth()
+        )
         self.log_in_button.setSizePolicy(sizePolicy)
         self.log_in_button.setMinimumSize(QtCore.QSize(0, 35))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.log_in_button.setFont(font)
-        self.log_in_button.setStyleSheet("QPushButton {\n"
-"    border-radius: 5px;\n"
-"    background-color:#6240C2;\n"
-"    color: rgb(255, 255, 255);\n"
-"    background-color: rgb(148, 206, 120);\n"
-"    height: 30px;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: #81b369;\n"
-"}")
+        self.log_in_button.setStyleSheet(
+            "QPushButton {\n"
+            "    border-radius: 5px;\n"
+            "    background-color:#6240C2;\n"
+            "    color: rgb(255, 255, 255);\n"
+            "    background-color: rgb(148, 206, 120);\n"
+            "    height: 30px;\n"
+            "}\n"
+            "QPushButton:hover {\n"
+            "    background-color: #81b369;\n"
+            "}"
+        )
         self.log_in_button.setAutoDefault(False)
         self.log_in_button.setDefault(True)
         self.log_in_button.setObjectName("log_in_button")
         self.horizontalLayout_3.addWidget(self.log_in_button)
         self.verticalLayout.addLayout(self.horizontalLayout_3)
         self.error_label = QtWidgets.QLabel(LoginDialog)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.error_label.sizePolicy().hasHeightForWidth())
