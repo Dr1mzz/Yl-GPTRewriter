@@ -5,6 +5,7 @@ class Ui_RequestWidget(object):
     def setupUi(self, RequestWidget):
         RequestWidget.setObjectName("RequestWidget")
         RequestWidget.resize(501, 301)
+        RequestWidget.setFixedSize(501, 301)
         self.verticalLayoutWidget = QtWidgets.QWidget(RequestWidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(0, 30, 501, 271))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")

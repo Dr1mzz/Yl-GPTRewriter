@@ -6,6 +6,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(860, 576)
+        MainWindow.setFixedSize(860, 576)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.textEdit_2 = QtWidgets.QTextEdit(self.centralwidget)

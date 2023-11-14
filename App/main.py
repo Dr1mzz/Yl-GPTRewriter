@@ -105,6 +105,7 @@ class LoginDialog(QDialog, Ui_LoginDialog):
     def __init__(self):
         super(LoginDialog, self).__init__()
         self.player = None
+        self.setFixedSize
         self.setupUi(self)
         self.dao = UserDao()
         self.log_in_button.clicked.connect(self.log_in)
