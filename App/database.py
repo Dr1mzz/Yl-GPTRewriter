@@ -34,16 +34,15 @@ class ReqDao:
         self.cur = self.con.cursor()
     
     def save(self, user_id, request):
-        # query = "SELECT id, request FROM requests WHERE user_id = ?"
         if request == "":
             pass
         else:
             query = 'INSERT INTO requests(user_id, request) VALUES (?, ?)'
-            # try:
-            self.cur.execute(query, (user_id, request))
-            self.con.commit()
-            # except sqlite3.IntegrityError:
-            #     pass
+            try:
+                self.cur.execute(query, (user_id, request))
+                self.con.commit()
+            except sqlite3.IntegrityError:
+                pass
 
     def get_all(self, user_id):
         query = 'SELECT request FROM requests WHERE user_id = ?'

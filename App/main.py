@@ -63,10 +63,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 )
             except RuntimeError:
                 self.textEdit_2.setText(CHATGPT_ERROR)
-            if response == "Hmm, I am not sure. Email support@chatbase.co for more info.":
-                self.textEdit_2.setText(CHATGPT_ERROR)
-            else:
-                self.textEdit_2.setText(response)
+            self.textEdit_2.setText(response)
 
     def text_browser_rewriter_style(self, flag: bool) -> None:
         _translate = QtCore.QCoreApplication.translate
