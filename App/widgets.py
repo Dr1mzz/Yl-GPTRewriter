@@ -1,9 +1,5 @@
-from PyQt5 import QtCore, QtGui
-from PyQt5.QtCore import QRect
-import sqlite3
 from database import ReqDao
-from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlTableModel, QSqlQueryModel
-from PyQt5.QtWidgets import QWidget, QTableWidgetItem, QMainWindow
+from PyQt5.QtWidgets import QTableWidgetItem, QMainWindow, QHeaderView
 from resources.ui.ReqWidget import Ui_RequestWidget
 
 
@@ -14,16 +10,20 @@ class RequestWidget(QMainWindow, Ui_RequestWidget):
         self.setupUi(self)
         self.db = ReqDao()
         self.initUI()
-        # self.connection = sqlite3.connect("")
-        # self.db = QSqlDatabase.addDatabase()
 
     def initUI(self):
+        horHeaders = []
         self.data = self.db.get_all(self.user_id)
         self.tableWidget.setColumnCount(1)
         self.tableWidget.setRowCount(0)
+        self.tableWidget.verticalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         for i, row in enumerate(self.data):
             self.tableWidget.setRowCount(
                 self.tableWidget.rowCount() + 1)
             for j, elem in enumerate(row):
+                horHeaders.append(elem)
                 self.tableWidget.setItem(
                     i, j, QTableWidgetItem(str(elem)))
+        self.tableWidget.setHorizontalHeaderLabels(horHeaders)
+        header = self.tableWidget.horizontalHeader()
+        header.setStretchLastSection(True)

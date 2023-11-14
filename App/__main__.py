@@ -57,9 +57,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if not (flag):
             try:
                 response = g4f.ChatCompletion.create(
-                    model=g4f.models.gpt_35_turbo,
+                    model="gpt-3.5-turbo",
+                    provider=g4f.Provider.GeekGpt,
                     messages=[{"role": "user", "content": prompt}],
-                    timeout=120,
                 )
             except RuntimeError:
                 self.textEdit_2.setText(CHATGPT_ERROR)
@@ -94,11 +94,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             )
     
     def add_request(self, request):
-        # cursor = self.cursor
         try:
             self.request_dao.save(self.user_id, request)
         except ReqException:
-            print("DB CRASH WHEN SAVE")
+            pass
 
     def get_requests(self):
         self.request_widget.initUI()
@@ -138,11 +137,11 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         login = self.login_input.text()
         password = self.pass_input.text()
         if self.check_login(login) and self.check_pass(password):
-            # try:
-            self.dao.save(login, login, password)
-            self.log_in()
-            # except Exception:
-            #     self.set_error("Error: this login is already occupied.")
+            try:
+                self.dao.save(login, login, password)
+                self.log_in()
+            except Exception:
+                self.set_error("Error: this login is already occupied.")
 
     def check_pass(self, password):
         if not 8 <= len(password) <= 30:
